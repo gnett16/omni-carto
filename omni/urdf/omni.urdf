@@ -1,0 +1,226 @@
+<?xml version="1.0" ?>
+<robot name="omni">
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.125396 2.39673e-17 0.0513697" rpy="0 0 0"/>
+      <mass value="2.99867"/>
+      <inertia ixx="0.00697143" ixy="0" ixz="3.19277e-05" iyy="0.0165647" iyz="0" izz="0.0216984"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.125 2.77556e-17 0.02162" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/base_link.stl"/>
+      </geometry>
+      <material name="base_link_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.125 2.77556e-17 0.02162" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/base_link.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wheel1">
+    <inertial>
+      <origin xyz="-4.62646e-09 2.15356e-10 -0.0194206" rpy="0 0 0"/>
+      <mass value="0.105412"/>
+      <inertia ixx="3.8723e-05" ixy="2.1629e-12" ixz="2.584e-13" iyy="3.8723e-05" iyz="-7.71155e-14" izz="6.118e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="-2.77556e-17 -1.38778e-17 -0.0388" rpy="8.65956e-17 -8.65956e-17 -3.14766e-19"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+      <material name="wheel1_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-2.77556e-17 -1.38778e-17 -0.0388" rpy="8.65956e-17 -8.65956e-17 -3.14766e-19"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint1" type="continuous">
+    <origin xyz="-0.22 -0.12 0.03162" rpy="1.5708 -0.0360662 -1.38117e-24"/>
+    <parent link="base_link"/>
+    <child link="wheel1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+
+  <link name="wheel2">
+    <inertial>
+      <origin xyz="-4.62646e-09 2.15356e-10 -0.0194206" rpy="0 0 0"/>
+      <mass value="0.105412"/>
+      <inertia ixx="3.8723e-05" ixy="2.1629e-12" ixz="2.584e-13" iyy="3.8723e-05" iyz="-7.71155e-14" izz="6.118e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="1.04083e-17 -6.93889e-18 -0.0388" rpy="8.65956e-17 -8.65956e-17 -6.1402e-50"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+      <material name="wheel2_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="1.04083e-17 -6.93889e-18 -0.0388" rpy="8.65956e-17 -8.65956e-17 -6.1402e-50"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint2" type="continuous">
+    <origin xyz="-0.03 -0.12 0.03162" rpy="1.5708 -6.1402e-50 0"/>
+    <parent link="base_link"/>
+    <child link="wheel2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+
+  <link name="wheel3">
+    <inertial>
+      <origin xyz="-4.62646e-09 2.15356e-10 -0.0194206" rpy="0 0 0"/>
+      <mass value="0.105412"/>
+      <inertia ixx="3.8723e-05" ixy="2.1629e-12" ixz="2.584e-13" iyy="3.8723e-05" iyz="-7.71155e-14" izz="6.118e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -6.93889e-18 -0.0388" rpy="8.65956e-17 -8.65956e-17 -6.1402e-50"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+      <material name="wheel3_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -6.93889e-18 -0.0388" rpy="8.65956e-17 -8.65956e-17 -6.1402e-50"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint3" type="continuous">
+    <origin xyz="-0.22 0.12 0.03162" rpy="-1.5708 6.1402e-50 0"/>
+    <parent link="base_link"/>
+    <child link="wheel3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+
+  <link name="wheel4">
+    <inertial>
+      <origin xyz="-4.62646e-09 2.15356e-10 -0.0194206" rpy="0 0 0"/>
+      <mass value="0.105412"/>
+      <inertia ixx="3.8723e-05" ixy="2.1629e-12" ixz="2.584e-13" iyy="3.8723e-05" iyz="-7.71155e-14" izz="6.118e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="6.93889e-18 -3.46945e-18 -0.0388" rpy="8.65956e-17 -8.65956e-17 -6.1402e-50"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+      <material name="wheel4_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="6.93889e-18 -3.46945e-18 -0.0388" rpy="8.65956e-17 -8.65956e-17 -6.1402e-50"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/mecanum_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint4" type="continuous">
+    <origin xyz="-0.03 0.12 0.03162" rpy="-1.5708 1.5708 0"/>
+    <parent link="base_link"/>
+    <child link="wheel4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+
+  <link name="lidar_link">
+    <inertial>
+      <origin xyz="6.13581e-19 1.92593e-33 -0.0125" rpy="0 0 0"/>
+      <mass value="0.0743615"/>
+      <inertia ixx="2.06043e-05" ixy="0" ixz="0" iyy="2.06043e-05" iyz="0" izz="3.34627e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 1.83697e-18 0" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/lidar.stl"/>
+      </geometry>
+      <material name="lidar_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 1.83697e-18 0" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://omni/meshes/lidar.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="-0.125 2.97456e-17 0.08662" rpy="3.14159 -0 0"/>
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+
+  <gazebo reference="lidar_link">
+    <material>Gazebo/Gray</material>
+    <sensor type="ray" name="ray_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>30.0</update_rate>
+      <ray>
+         <scan>
+            <horizontal>
+              <samples>600</samples>
+              <resolution>1</resolution>
+              <min_angle>0.0</min_angle>
+              <max_angle>6.28319</max_angle>
+            </horizontal>
+         </scan>
+         <range>
+            <min>0.120</min>
+            <max>10</max>
+            <resolution>0.015</resolution>
+         </range>
+      </ray>
+      <plugin name="ros_ray_sensor_controller" filename="libgazebo_ros_laser.so">
+          <topicName>scan</topicName>
+          <frameName>lidar_link</frameName>
+          <gaussianNoise>0.01</gaussianNoise> 
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="omni_steering" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>20.0</odometryRate>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+    </plugin>
+  </gazebo>
+</robot>
